@@ -19,7 +19,7 @@ using System.Threading.Tasks;
             oper = Convert.ToChar(Console.ReadLine());
              Console.WriteLine("Enter the second number ");
             number2 = Convert.ToDouble(Console.ReadLine());
-             if (oper == '+')
+            if (oper == '+') //оператор сложения
             {
                 total = number1 + number2;
                 Console.WriteLine("The result of addition equals " + total);
@@ -27,7 +27,7 @@ using System.Threading.Tasks;
             else if (oper == '-')
             {
                 total = number1 - number2;
-                Console.WriteLine("The result of the subtraction equals " + total);
+                Console.WriteLine("The result of the subtraction equals " + number1 + " - " + number2 + " = " + total);
             }
             else if (oper == '*')
             {
