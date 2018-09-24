@@ -1,0 +1,6 @@
+.vs
+Lab1/bin/Debug/*.exe
+Lab1/bin/Debug/*.config
+Lab1/bin/Debug/*.pdb
+Lab1/obj
+Lab1/*.config
