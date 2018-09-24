@@ -41,7 +41,7 @@ using System.Threading.Tasks;
                 Console.WriteLine("The division result equals " + number1 + "/" + number2 + "=" + total);
             }
             else
-            { Console.WriteLine("Unknown operator "); }
+            { Console.WriteLine("Unknown operator "); } //неизвестный оператор
         }
     }
 }
