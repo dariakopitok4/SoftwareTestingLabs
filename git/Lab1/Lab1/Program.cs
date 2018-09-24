@@ -22,7 +22,7 @@ using System.Threading.Tasks;
             if (oper == '+') //оператор сложения
             {
                 total = number1 + number2;
-                Console.WriteLine("The result of addition equals " + total);
+                Console.WriteLine("The result of addition equals " + number1 + "+" + number2 + "=" + total);
             }
             else if (oper == '-')
             {
