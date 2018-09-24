@@ -34,7 +34,7 @@ using System.Threading.Tasks;
                 total = number1 * number2;
                 Console.WriteLine("The result of multiplying equals " + total);
             }
-            else if (oper == '/')
+            else if (oper == '/') // оператор деления
             {
                 if (number2 == 0) { Console.WriteLine("Division by zero "); }
                 total = number1 / number2;
