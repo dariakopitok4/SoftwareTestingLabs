@@ -38,7 +38,7 @@ using System.Threading.Tasks;
             {
                 if (number2 == 0) { Console.WriteLine("Division by zero "); }
                 total = number1 / number2;
-                Console.WriteLine("The division result equals " + total);
+                Console.WriteLine("The division result equals " + number1 + "/" + number2 + "=" + total);
             }
             else
             { Console.WriteLine("Unknown operator "); }
