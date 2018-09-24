@@ -24,7 +24,7 @@ using System.Threading.Tasks;
                 total = number1 + number2;
                 Console.WriteLine("The result of addition equals " + number1 + "+" + number2 + "=" + total);
             }
-            else if (oper == '-')
+            else if (oper == '-') //оператор вычитания
             {
                 total = number1 - number2;
                 Console.WriteLine("The result of the subtraction equals " + number1 + " - " + number2 + " = " + total);
