@@ -13,7 +13,7 @@ using System.Threading.Tasks;
         private static char oper;
          static void Main(string[] args)
         {
-            Console.WriteLine("Enter the first number ");
+            Console.WriteLine("Enter the first number "); //ввод первой переменной
             number1 = Convert.ToDouble(Console.ReadLine());
              Console.WriteLine("Enter operator ");
             oper = Convert.ToChar(Console.ReadLine());
