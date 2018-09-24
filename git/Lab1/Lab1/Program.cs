@@ -27,7 +27,7 @@ using System.Threading.Tasks;
             else if (oper == '-')
             {
                 total = number1 - number2;
-                Console.WriteLine("The result of the subtraction equals " + total);
+                Console.WriteLine("The result of the subtraction equals " + number1 + " - " + number2 + " = " + total);
             }
             else if (oper == '*')
             {
