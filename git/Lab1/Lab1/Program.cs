@@ -19,7 +19,7 @@ namespace Calculator
             oper = Convert.ToChar(Console.ReadLine());
             Console.WriteLine("Enter the second number ");
             number2 = Convert.ToDouble(Console.ReadLine());
-            if (oper == '+')
+            if (oper == '+') //оператор сложения
             {
                 total = number1 + number2;
                 Console.WriteLine("The result of addition equals " + total);
