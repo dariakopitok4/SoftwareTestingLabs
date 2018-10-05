@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Triangle
+namespace Triangle1
 {
-    public class Triangle_c
+    class Triangle_c
     {
-        public bool MyTriangle(int a, int b, int c)
+        public bool Triangle(int a, int b, int c)
         {
             if (a > 0 && b > 0 && c > 0)
             {
