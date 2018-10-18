@@ -20,7 +20,7 @@ namespace Triangle1
         }
 
         [Test]
-        public void Test_abc_000_returnfalse()
+        public void Test_abc_0_returnfalse()
         {
             Assert.AreEqual(false, t.Triangle(0, 0, 0));
         }
@@ -38,37 +38,37 @@ namespace Triangle1
         }
 
         [Test]
-        public void Test_b_minus9_returnfalse()
+        public void Test_b_minus_returnfalse()
         {
             Assert.AreEqual(false, t.Triangle(5, -9, 15));
         }
 
         [Test]
-        public void Test_c_minus17_returnfalse()
+        public void Test_c_minus_returnfalse()
         {
             Assert.AreEqual(false, t.Triangle(5, 9, -17));
         }
 
         [Test]
-        public void Test_abc_minus5minus9minus15_returnfalse()
+        public void Test_abc_minus_returnfalse()
         {
             Assert.AreEqual(false, t.Triangle(-5, -9, -15));
         }
 
         [Test]
-        public void Test_abc_minus5_returnfalse()
+        public void Test_a_minus_returnfalse()
         {
             Assert.AreEqual(false, t.Triangle(-5, 9, 15));
         }
 
         [Test]
-        public void Test_ab_c_66_13_returnfalse()
+        public void Test_с_more_than_ab_returnfalse()
         {
             Assert.AreEqual(false, t.Triangle(6, 6, 13));
         }
 
         [Test]
-        public void Test_abc_662_returnfalse()
+        public void Test_c_less_than_ab_returntrue()
         {
             Assert.AreEqual(true, t.Triangle(6, 6, 2));
         }

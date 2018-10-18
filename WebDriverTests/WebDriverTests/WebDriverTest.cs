@@ -10,24 +10,33 @@ namespace WebDriverTests
     [TestClass]
     public class WebDriverTest
     {
+        string firstParm = "form-input origin";
+        string secondParm = "form-input destination";
+        string buttonId = "btnSubmitHomeSearcher";
+        string valueCity = "Almeria";
+        string errorMess = "popover popover--error";
+
+
         [TestMethod]
         public void Test_enter_only_one_destination()
         {
-            
             RemoteWebDriver Driver = new ChromeDriver();
-           var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30)); 
-            Driver.Navigate().GoToUrl( @"https://www.vueling.com/ru");
-            string classname = @"form - input origin";
-            wait.Until(ExpectedConditions.ElementExists(By.ClassName(classname)));
-            var txtFirstParm = Driver.FindElementByClassName(classname);
-            var txtSecondParm = Driver.FindElementByClassName(@"form-input destination");
-            var but = Driver.FindElementById("btnSubmitHomeSearcher");
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+
+            Driver.Navigate().GoToUrl("https://www.vueling.com/ru");
+            
+            var txtFirstParm = Driver.FindElementByClassName(firstParm);
+            var txtSecondParm = Driver.FindElementByClassName(secondParm);
+            var but = Driver.FindElementById(buttonId);
             txtFirstParm.Clear();
-            txtFirstParm.SendKeys("Almeria");
+            txtFirstParm.SendKeys(valueCity);
 
             txtSecondParm.Clear();
 
             but.Click();
+
+            var error = Driver.FindElementByClassName(errorMess);
+            
         }
     }
 }
