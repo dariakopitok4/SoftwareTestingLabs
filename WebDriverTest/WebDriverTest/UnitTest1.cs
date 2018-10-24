@@ -1,13 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-namespace WebDriverTests
+using NUnit.Framework;
 
+namespace WebDriverTest
 {
-    [TestClass]
+    [TestFixture]
     public class WebDriverTest
     {
         string firstParm = "form-input origin";
@@ -17,14 +15,14 @@ namespace WebDriverTests
         string errorMess = "popover popover--error";
 
 
-        [TestMethod]
+        [Test]
         public void Test_enter_only_one_destination()
         {
             RemoteWebDriver Driver = new ChromeDriver();
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
 
             Driver.Navigate().GoToUrl("https://www.vueling.com/ru");
-            
+
             var txtFirstParm = Driver.FindElementByClassName(firstParm);
             var txtSecondParm = Driver.FindElementByClassName(secondParm);
             var but = Driver.FindElementById(buttonId);
@@ -36,7 +34,7 @@ namespace WebDriverTests
             but.Click();
 
             var error = Driver.FindElementByClassName(errorMess);
-            
+
         }
     }
 }
