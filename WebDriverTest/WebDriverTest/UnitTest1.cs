@@ -2,30 +2,34 @@ using System;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace WebDriverTest
 {
     [TestFixture]
     public class WebDriverTest
     {
-        string firstParm = "form-input origin";
-        string secondParm = "form-input destination";
-        string buttonId = "btnSubmitHomeSearcher";
-        string valueCity = "Almeria";
-        string errorMess = "popover popover--error";
+        const string url = "https://www.vueling.com/ru";
+        const string departure = "form-input origin";
+        const string destination = "form-input destination";
+        const string buttonId = "btnSubmitHomeSearcher";
+        const string valueCity = "Almeria";
+        const string error = "popover popover--error";
+        const string mess = "Вы должны выбрать один из вариантов";
 
 
         [Test]
         public void Test_enter_only_one_destination()
         {
-            RemoteWebDriver Driver = new ChromeDriver();
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            RemoteWebDriver driver = new ChromeDriver();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
 
-            Driver.Navigate().GoToUrl("https://www.vueling.com/ru");
+            driver.Navigate().GoToUrl(url);
 
-            var txtFirstParm = Driver.FindElementByClassName(firstParm);
-            var txtSecondParm = Driver.FindElementByClassName(secondParm);
-            var but = Driver.FindElementById(buttonId);
+            var txtFirstParm = driver.FindElementByClassName(departure);
+            var txtSecondParm = driver.FindElementByClassName(destination);
+            var but = driver.FindElementById(buttonId);
+
             txtFirstParm.Clear();
             txtFirstParm.SendKeys(valueCity);
 
@@ -33,7 +37,10 @@ namespace WebDriverTest
 
             but.Click();
 
-            var error = Driver.FindElementByClassName(errorMess);
+            var errorWindow = driver.FindElementByClassName(error);
+
+            Assert.AreEqual(mess, errorWindow.Text);
+            
 
         }
     }
