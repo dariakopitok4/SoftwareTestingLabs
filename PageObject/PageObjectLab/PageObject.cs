@@ -13,26 +13,26 @@ using OpenQA.Selenium.Support.PageObjects;
 using System.Security.Policy;
 using System.Threading;
 
-namespace WebDriverT
+namespace PageObjectLab
 {
-    class Testclass
+    class TestClass
     {
         public IWebDriver driver;
-        string city = "Madrid";
-        string notFind = "Вы должны выбрать один из вариантов";
+        const string city = "Madrid";
+        const string notFind = "Вы должны выбрать один из вариантов";
+        const string url = "https://www.vueling.com/ru";
 
         [Test]
         public void page()
         {
-            driver.Navigate().GoToUrl("https://www.vueling.com/ru");
-            FindElements pageHome = new FindElements(); // чтобы могли обращаться к объектам из PageHome.cs
-            PageFactory.InitElements(driver, pageHome); // инициализация элементов Page Object из PageHome.cs
+            driver.Navigate().GoToUrl(url);
+            PageHome pageHome = new FindElements();
+            PageFactory.InitElements(driver, pageHome);
             pageHome.destinationBox.SendKeys(city);
             pageHome.departureBox.SendKeys(city);
             pageHome.findButton.Click();
 
             Assert.AreEqual(notFind, pageHome.errorMess.Text);
-
         }
     }
 }

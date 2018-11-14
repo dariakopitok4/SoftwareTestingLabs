@@ -5,6 +5,7 @@
 # compiled source #
 ###################
 *.com
+*.sln
 *.class
 *.dll
 *.exe

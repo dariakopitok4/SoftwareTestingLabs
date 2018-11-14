@@ -17,7 +17,6 @@ namespace WebDriverTest
         const string error = "popover popover--error";
         const string mess = "Вы должны выбрать один из вариантов";
 
-
         [Test]
         public void Test_enter_only_one_destination()
         {
@@ -40,8 +39,6 @@ namespace WebDriverTest
             var errorWindow = driver.FindElementByClassName(error);
 
             Assert.AreEqual(mess, errorWindow.Text);
-            
-
         }
     }
 }
