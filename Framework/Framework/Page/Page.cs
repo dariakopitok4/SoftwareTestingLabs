@@ -17,33 +17,37 @@ namespace Framework
 {
     class PageHome
     {
-        private const string url = "https://www.vueling.com/ru";
-        private const string cityDestination = "Barcelona";
-        private const string cityDeparture = "Madrid";
+        private const string URL = "https://www.vueling.com/ru";
+        private const string DEPARTURE_CITY = "Barcelona";
+        private const string DESTATION_CITY = "Madrid";
 
         private IWebDriver driver;
 
         [FindsBy(How = How.ClassName, Using = "form-input origin")]
-        private IWebElement destinationBox;
+        private IWebElement departureCity;
         [FindsBy(How = How.ClassName, Using = "form-input destination")]
-        private IWebElement departureBox;
+        private IWebElement destinationCity;
         [FindsBy(How = How.Id, Using = "roundTrip")]
-        private IWebElement buttonFlightBack;
+        private IWebElement buttonRoundTrip;
         [FindsBy(How = How.ClassName, Using = "ui-datepicker-week-end ")]
-        private IWebElement destinationDate;
+        private IWebElement depatureDate;
         [FindsBy(How = How.ClassName, Using = "ui-datepicker-week-end ui-datepicker-first-day travelTime ui-datepicker-travel-time")]
-        private IWebElement departureDate;
+        private IWebElement destinationDate;
         [FindsBy(How = How.Id, Using = "icon vy-icon-rounded-les")]
         private IWebElement reducePassengers;
         [FindsBy(How = How.Id, Using = "btnSubmitHomeSearcher")]
         private IWebElement findButton;
         [FindsBy(How = How.Id, Using = "popover-content")]
-        private IWebElement errorMess;
-
-        public IWebElement DestinationBox { get => destinationBox; }
-        public IWebElement DepartureBox { get => departureBox; }
+        private IWebElement errorMessage;
+        
+        public IWebElement DepartureBox { get => departureCity; }
+        public IWebElement DestinationBox { get => destinationCity; }
+        public IWebElement ButtonRoundTrip { get => buttonRoundTrip; }
+        public IWebElement DepatureDate { get => depatureDate; }
+        public IWebElement DestinationDate { get => destinationDate; }
+        public IWebElement ReducePassengers { get => reducePassengers; }
         public IWebElement FindButton { get => findButton; }
-        public IWebElement ErrorMess { get => errorMess; }
+        public IWebElement ErrorMess { get => errorMessage; }
 
         public PageHome(IWebDriver driver)
         {
@@ -53,23 +57,23 @@ namespace Framework
 
         public void OpenPage()
         {
-            driver.Navigate().GoToUrl(url);
+            driver.Navigate().GoToUrl(URL);
         }
 
         public void ChoiceFlightParametrs()
         {
-            destinationBox.SendKeys(cityDestination);
-            departureBox.SendKeys(cityDeparture);
-            buttonFlightBack.Click();
+            departureCity.SendKeys(DEPARTURE_CITY);
+            destinationCity.SendKeys(DESTATION_CITY);
+            buttonRoundTrip.Click();
+            depatureDate.Click();
             destinationDate.Click();
-            departureDate.Click();
-            reducePassengers.Click();
+            ReducePassengers.Click();
             findButton.Click();
         }
 
         public string GetErrorMes()
         {
-            return errorMess.GetAttribute("content");
+            return errorMessage.GetAttribute("content");
         }
     }
 }

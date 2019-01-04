@@ -18,21 +18,21 @@ namespace PageObjectLab
     class TestClass
     {
         public IWebDriver driver;
-        const string city = "Madrid";
-        const string notFind = "Вы должны выбрать один из вариантов";
-        const string url = "https://www.vueling.com/ru";
+        private const string CITY = "Madrid";
+        private const string NOT_FOUND = "Вы должны выбрать один из вариантов";
+        private const string URL = "https://www.vueling.com/ru";
 
         [Test]
-        public void page()
+        public void SelectTwoEqualCity()
         {
-            driver.Navigate().GoToUrl(url);
-            PageHome pageHome = new FindElements();
+            driver.Navigate().GoToUrl(URL);
+            PageHome pageHome = new PageHome();
             PageFactory.InitElements(driver, pageHome);
-            pageHome.destinationBox.SendKeys(city);
-            pageHome.departureBox.SendKeys(city);
+            pageHome.departureBox.SendKeys(CITY);
+            pageHome.destinationBox.SendKeys(CITY);
             pageHome.findButton.Click();
 
-            Assert.AreEqual(notFind, pageHome.errorMess.Text);
+            Assert.AreEqual(NOT_FOUND, pageHome.errorMessage.Text);
         }
     }
 }

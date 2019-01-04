@@ -33,7 +33,7 @@ namespace Framework
         {
             PageHome selectPage = new PageHome(driver);
             selectPage.OpenPage();
-            selectPage.ReducePersons();
+            selectPage.ChoiceFlightParametrs();
         }
 
         public string ErrorMessage()

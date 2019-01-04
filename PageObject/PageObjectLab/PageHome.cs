@@ -14,17 +14,17 @@ namespace PageObjectLab
     class PageHome
     {
         [FindsBy(How = How.ClassName, Using = "form-input origin")]
-        private IWebElement destinationBox;
+        private IWebElement departureCity;
         [FindsBy(How = How.ClassName, Using = "form-input destination")]
-        private IWebElement departureBox;
+        private IWebElement destinationCity;
         [FindsBy(How = How.Id, Using = "btnSubmitHomeSearcher")]
         private IWebElement findButton;
         [FindsBy(How = How.Id, Using = "btnSubmitHomeSearcher")]
-        private IWebElement errorMess;
+        private IWebElement errorMessage;
 
-        public IWebElement DestinationBox { get => destinationBox; }
-        public IWebElement DepartureBox { get => departureBox; }
+        public IWebElement DestinationCity { get => destinationCity; }
+        public IWebElement DepartureCity { get => departureCity; }
         public IWebElement FindButton { get => findButton; }
-        public IWebElement ErrorMess { get => errorMess; }
+        public IWebElement ErrorMessage { get => errorMessage; }
     }
 }

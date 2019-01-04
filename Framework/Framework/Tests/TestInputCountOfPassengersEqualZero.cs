@@ -8,10 +8,10 @@ using NUnit.Framework;
 namespace Framework
 {
     [TestFixture]
-    class Automation
+    class TestInputCountOfPassengersEqualZero
     {
         private Steps steps = new Framework.Steps();
-        private const string errorMess = "Вы должны заполнить это поле";
+        private const string ERROR_MESSAGE = "Вы должны заполнить это поле";
         
         [SetUp]
         public void Init()
@@ -29,7 +29,7 @@ namespace Framework
         public void CountOfPassengersEqualZero()
         {
             steps.SelectNoOnePerson();
-            Assert.AreEqual(errorMess, steps.ErrorMessage());
+            Assert.AreEqual(ERROR_MESSAGE, steps.ErrorMessage());
         }
     }
 }
