@@ -29,135 +29,75 @@ namespace Framework
             Instance.CloseBrowser();
         }
 
-        public void SelectPage()
-        {
-            PageHome selectPage = new PageHome(driver);
-            selectPage.OpenPage();
-            selectPage.SelectMoreThenOneBaby();
-        }
-
-        public void SelectNoOnePerson()
-        {
-            PageHome selectPage = new PageHome(driver);
-            selectPage.OpenPage();
-            selectPage.ChoiceFlightParametrs();
-        }
-
-        public string ErrorMessage()
+        public bool SelectDateRetroactively()
         {
             PageHome mainPage = new PageHome(driver);
-            return mainPage.GetErrorMes();
+            mainPage.OpenPage();
+            return mainPage.EnterTheDateRetroactively(mainPage.DepatureDatePast);
         }
 
-        public void ChooseYouthPersonLessThenTwelve()
-        {
-            PageHome selectPage = new PageHome(driver);
-            selectPage.OpenPage();
-            selectPage.IndependentFlightForChildrenUnderTwelveYearsOld();
-        }
-
-        public string UnableChooseYouthPersonLessThenTwelveYear()
+        public bool SelectReturnDateOneYearAfterDeparture()
         {
             PageHome mainPage = new PageHome(driver);
-            return mainPage.GetYearOfBirth();
+            mainPage.OpenPage();
+            return mainPage.EnterReturnDateOneYearAfterDeparture(mainPage.DestinationDateOneYear);
         }
 
-        public string CannotChooseBabeWithoutAdult()
+        public bool SelectDepartureDateWithoutDestinationDate()
         {
             PageHome mainPage = new PageHome(driver);
-            return mainPage.GetYearOfBirth();
+            mainPage.OpenPage();
+            return mainPage.ChoiceDepartureDateWithoutDestinationDate(mainPage.DepatureDate);
         }
 
-        public void ChoosePastDateOfReturn()
-        {
-            PageHome selectPage = new PageHome(driver);
-            selectPage.SelectDateOfDepartureAndDateOfReturn();
-        }
-
-        public string UnableChoosePastDate()
+        public string SelectOnlyOneAirport()
         {
             PageHome mainPage = new PageHome(driver);
-            return mainPage.SelectRightDateOfReturn();
+            mainPage.OpenPage();
+            return mainPage.EnterOnlyOneAirport(mainPage.ErrorMessage);
         }
 
-        public string UnableChooseReturnDateAfterOneYear()
+        public string SelectChildWithoutAdult()
         {
             PageHome mainPage = new PageHome(driver);
-            return mainPage.SelectRightDateOfReturn();
+            mainPage.OpenPage();
+            return mainPage.ChoiceOfChildWithoutAdultAsPassenger(mainPage.WarningChildren);
         }
 
-        public void ChoosePastDateOfReturnAndDeparure()
-        {
-            PageHome selectPage = new PageHome(driver);
-            selectPage.SelectPastDateOfDepartureAndReturn();
-        }
-        s
-        public string UnableChoosePastDateOfReturnAndDeparure()
+        public string SelectFlightParametrs()
         {
             PageHome mainPage = new PageHome(driver);
-            return mainPage.SelectRightDateOfReturnAndDeparture();
+            mainPage.OpenPage();
+            return mainPage.ChoiceFlightParametrs(mainPage.ErrorPassengers);
         }
 
-        public void ChooseBigCountOfPessanger()
-        {
-            PageHome selectPage = new PageHome(driver);
-            selectPage.ChooseNumberOfPassengers();
-        }
-
-        public string UnableChooseCountOfPessangerMoreThenTen()
+        public bool SelectBabyWithoutAdultAsPassenger()
         {
             PageHome mainPage = new PageHome(driver);
-            return mainPage.GetErrorAboutNumberOfPassengers();
+            mainPage.OpenPage();
+            return mainPage.ChoiceBabyWithoutAdultAsPassenger(mainPage.AddBaby);
         }
 
-        public void ChooseEqualAirportOfDepartureAndReturn()
-        {
-            PageHome selectPage = new PageHome(driver);
-            selectPage.SelectEqualAirportOfDepartureAndReturn("Минск", "Минск");
-        }
-
-        public string UnableChooseEqualAirportOfDepartureAndReturn()
+        public bool SelectTwentyFivePassengers()
         {
             PageHome mainPage = new PageHome(driver);
-            return mainPage.ErrorMessAboutNotEqualAirportOfDepartureAndReturn();
+            mainPage.OpenPage();
+            return mainPage.ChoiceTwentyFivePassengers(mainPage.GroupFlight);
         }
 
-        public void ChooseZeroCountOfPeople()
-        {
-            PageHome selectPage = new PageHome(driver);
-            selectPage.ChooseZeroCountOfPassengers();
-        }
-
-        public string UnableChooseZeroCountOfPeople()
+        public string SelectAirportDepartureAndDestinationCannotBeSamePlace()
         {
             PageHome mainPage = new PageHome(driver);
-            return mainPage.GetErrorAboutZeroCountOfPassengers();
+            mainPage.OpenPage();
+            return mainPage.AirportDepartureAndDestinationCannotBeSamePlace(mainPage.ErrorMessage);
         }
 
-        public void ChoosePersonWichNeedSpecialHelp()
-        {
-            PageHome selectPage = new PageHome(driver);
-            selectPage.OpenPage();
-            selectPage.ChoosePessangerWichNeedSpecialHelp();
-        }
-
-        public string CanChoosePersonWichNeedSpecialHelp()
+        public bool SelectNumberOfBabiesMoreThanNumberOfAdults()
         {
             PageHome mainPage = new PageHome(driver);
-            return mainPage.GetPessangerWichNeedSpecialHelp();
+            mainPage.OpenPage();
+            return mainPage.EnterTheNumberOfBabiesMoreThanNumberOfAdults(mainPage.AddBaby);
         }
 
-        public void SelectPossibilityToTransferDataToThirdFace()
-        {
-            PageHome selectPage = new PageHome(driver);
-            selectPage.OpenPage();
-            selectPage.ChoosePessangerWichNeedSpecialHelp();
-        }
-
-        public string CanChoosePossibilityToTransferDataToThirdFace()
-        {
-            PageHome mainPage = new PageHome(driver);
-            return mainPage.GetPessangerWichNeedSpecialHelp();
-        }
     }
 }

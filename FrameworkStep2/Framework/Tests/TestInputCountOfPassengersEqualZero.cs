@@ -15,6 +15,7 @@ namespace Framework
         private const string DATE_DEPARTURE = "10.01.2019";
         private const string ERROR_MESSAGE = "Вы должны заполнить это поле";
         private const string ERROR_MESSAGE_CITY = "Вы должны выбрать один из вариантов";
+        private const string WARNING_CHILD = "*Если на момент совершения полета несовершеннолетний не достигнет указанного возраста, он не будет допущен к посадке на борт самолета.";
 
         [SetUp]
         public void Init()
@@ -29,66 +30,73 @@ namespace Framework
         }
 
         [Test]
-        public void UnableChoosePastDayOfDeparture()
+        public void UnableEnterTheDateRetroactively()
         {
-            steps.SelectPage();
-            Assert.AreEqual(DATE_DEPARTURE, steps.UnableChoosePastDate());
+            steps.SelectDateRetroactively();
+            Assert.AreEqual(true, steps.SelectDateRetroactively());
         }
 
         [Test]
-        public void UnableSelectReturnDateAfterOneYear()
+        public void UnableSelectReturnDateOneYearAfterDeparture()
         {
-            steps.SelectPage();
-            Assert.AreEqual(DATE_RETURN, steps.UnableChooseReturnDateAfterOneYear());
+            steps.SelectReturnDateOneYearAfterDeparture();
+            Assert.AreEqual(false, steps.SelectReturnDateOneYearAfterDeparture());
         }
 
         [Test]
-        public void UnableSelectDepartureDateWithoutReturnDate1()
+        public void UnableSelectDepartureDateWithoutDestinationDate()
         {
-            steps.SelectPage();
-            Assert.IsNull(steps.UnableChoosePastDate());
+            steps.SelectDepartureDateWithoutDestinationDate();
+            Assert.AreEqual(false, steps.SelectDepartureDateWithoutDestinationDate());
         }
 
         [Test]
-        public void CannotEnterOnlyOneDestination()
+        public void UnableSelectOnlyOneAirport()
         {
-            steps.SelectPage();
-            Assert.AreEqual(ERROR_MESSAGE_CITY, steps.UnableChooseEqualAirportOfDepartureAndReturn());
+            steps.SelectOnlyOneAirport();
+            Assert.AreEqual(ERROR_MESSAGE_CITY, steps.SelectOnlyOneAirport());
         }
 
         [Test]
-        public void UnableChooseYouthPersonLessThenTwelve()
+        public void UnableSelectChildWithoutAdult()
         {
-            steps.SelectPage();
-            Assert.IsNotNull(steps.UnableChooseYouthPersonLessThenTwelveYear());
+            steps.SelectChildWithoutAdult();
+            Assert.AreEqual(WARNING_CHILD, steps.SelectChildWithoutAdult());
         }
 
         [Test]
-        public void CountOfPassengersEqualZero()
+        public void EnableSelectFlightParametrs()
         {
-            steps.SelectNoOnePerson();
-            Assert.AreEqual(ERROR_MESSAGE, steps.ErrorMessage());
+            steps.SelectFlightParametrs();
+            Assert.AreEqual(ERROR_MESSAGE, steps.SelectFlightParametrs());
         }
 
         [Test]
-        public void UnableChooseBabeWithoutAdult()
+        public void UnableSelectBabyWithoutAdultAsPassenger()
         {
-            steps.SelectPage();
-            Assert.IsNull(steps.CannotChooseBabeWithoutAdult());
+            steps.SelectBabyWithoutAdultAsPassenger();
+            Assert.AreEqual(false, steps.SelectBabyWithoutAdultAsPassenger());
         }    
 
         [Test]
-        public void UnableChooseCountOfPessangerMoreThenTwentySixPeople()
+        public void UnableSelectTwentyFivePassengers()
         {
-            steps.SelectPage();
-            Assert.IsNotNull(steps.UnableChooseCountOfPessangerMoreThenTen());
+            steps.SelectTwentyFivePassengers();
+            Assert.AreEqual(true, steps.SelectTwentyFivePassengers());
         }
 
         [Test]
-        public void UnableChooseEqualDepartureAndReturnAirport()
+        public void UnableSelectAirportDepartureAndDestinationCannotBeSamePlace()
         {
-            steps.SelectPage();
-            Assert.IsNull(steps.UnableChooseEqualAirportOfDepartureAndReturn());
+            steps.SelectAirportDepartureAndDestinationCannotBeSamePlace();
+            Assert.AreEqual(ERROR_MESSAGE_CITY, steps.SelectAirportDepartureAndDestinationCannotBeSamePlace());
+        }
+
+        [Test]
+        public void UnableSelectNumberOfBabiesMoreThanNumberOfAdults()
+        {
+            steps.SelectNumberOfBabiesMoreThanNumberOfAdults();
+            Assert.AreEqual(false, steps.SelectNumberOfBabiesMoreThanNumberOfAdults());
         }
     }
 }
