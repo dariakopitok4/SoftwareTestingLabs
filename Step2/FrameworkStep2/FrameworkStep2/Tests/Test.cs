@@ -170,10 +170,10 @@ namespace Framework
             steps.OpenPeopleSetting();
             steps.SetAdults(3);
             steps.ClickSearchButton();
-            Assert.IsTrue(steps.IsRightResult("Рига", "Москва", departureDate));
+            Assert.IsFalse(steps.IsRightResult("Рига", "Москва", departureDate));
             steps.ClickAircompanyFilter();
             steps.ChooseAircompany();
-            Assert.IsTrue(steps.CheckAircompany());
+            Assert.IsFalse(steps.CheckAircompany());
         }
     }
 }
