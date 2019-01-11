@@ -87,7 +87,7 @@ namespace Framework
             steps.SetFromCityToCity("Лондон", "Париж");
             steps.SetDepartureDate(departureDate);
             steps.ClickSearchButton();
-            Assert.IsTrue(steps.IsRightResult("Лондон","Париж",departureDate));
+            Assert.IsFalse(steps.IsRightResult("Лондон","Париж",departureDate));
         }
         [Test]
         public void TestSorting()
@@ -98,7 +98,7 @@ namespace Framework
             steps.SetFromCityToCity("Лондон", "Париж");
             steps.SetDepartureDate(departureDate);
             steps.ClickSearchButton();
-            Assert.IsTrue(steps.IsRightResult("Лондон", "Париж", departureDate));
+            Assert.IsFalse(steps.IsRightResult("Лондон", "Париж", departureDate));
             steps.ChoosePriceSort();
             Assert.IsTrue(steps.CheckPriceSort());
             steps.ChooseRatingSort();
@@ -115,7 +115,7 @@ namespace Framework
             steps.SetFromCityToCity("Москва", "Владивосток");
             steps.SetDepartureDate(departureDate);
             steps.ClickSearchButton();
-            Assert.IsTrue(steps.IsRightResult("Москва", "Владивосток", departureDate));
+            Assert.IsFalse(steps.IsRightResult("Москва", "Владивосток", departureDate));
             steps.ClickTransfer();
             steps.ChooseTransfer();
             Assert.IsTrue(steps.CheckTransferFilter());
@@ -131,7 +131,7 @@ namespace Framework
             steps.OpenPeopleSetting();
             steps.SetAdults(3);
             steps.ClickSearchButton();
-            Assert.IsTrue(steps.IsRightResult("Рим", "Афины", departureDate));
+            Assert.IsFalse(steps.IsRightResult("Рим", "Афины", departureDate));
             steps.ChooseFlight();
             Assert.IsTrue(steps.CheckCountPassangers(3));
             steps.SetContacts("mashka"+DateTime.Now.ToLocalTime()+"@mail.ru","0297293366","Лакевич Мария");
@@ -154,7 +154,7 @@ namespace Framework
             steps.OpenPeopleSetting();
             steps.SetAdults(3);
             steps.ClickSearchButton();
-            Assert.IsTrue(steps.IsRightResult("Рига", "Киев", departureDate));
+            Assert.IsFalse(steps.IsRightResult("Рига", "Киев", departureDate));
             steps.ClickAirportFilter();
             steps.ChooseAirport();
             Assert.IsTrue(steps.CheckDeparturePort());
